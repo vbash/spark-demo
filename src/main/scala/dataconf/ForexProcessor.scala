@@ -36,7 +36,7 @@ object ForexProcessor extends App {
     val gbp_eur = sqlContext.read.format("com.databricks.spark.csv")
       .option("header","true")
       .option("inferSchema","true")
-      .load("/Users/vbash/presentations/spark/gbpeur.txt")
+      .load("gbpeur.txt")
 
     val count = gbp_eur.count()
 
@@ -111,6 +111,6 @@ object ForexProcessor extends App {
     badMonths.coalesce(1).write
       .format("com.databricks.spark.csv")
       .option("header", "true")
-      .save("/Users/vbash/presentations/spark/badMonths.csv")
+      .save("badMonths.csv")
   }
 }
